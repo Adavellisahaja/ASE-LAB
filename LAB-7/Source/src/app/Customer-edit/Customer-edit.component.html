@@ -1,0 +1,41 @@
+<div class="button-row">
+  <a mat-raised-button color="primary" [routerLink]="['/Customers']">
+    <mat-icon>list</mat-icon>
+  </a>
+</div>
+<form [formGroup]="CustomerForm" (ngSubmit)="onFormSubmit(CustomerForm.value)">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Customer Id" formControlName="CustomerId"
+           [errorStateMatcher]="matcher">
+    <mat-error>
+      <span *ngIf="!CustomerForm.get('CustomerId').valid && CustomerForm.get('CustomerId').touched">Please enter Customer Id</span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Customer Name" formControlName="CustomerName"
+           [errorStateMatcher]="matcher">
+    <mat-error>
+      <span *ngIf="!CustomerForm.get('CustomerName').valid && CustomerForm.get('CustomerName').touched">Please enter Customer Name</span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Customer Email" formControlName="CustomerEmail"
+           [errorStateMatcher]="matcher">
+    <mat-error>
+      <span *ngIf="!CustomerForm.get('CustomerEmail').valid && CustomerForm.get('CustomerEmail').touched">Please enter Customer Email</span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Customer Phone Number" formControlName="CuustomerPhone"
+              [errorStateMatcher]="matcher"></textarea>
+    <mat-error>
+      <span *ngIf="!CustomerForm.get('CustomerPhone').valid && CustomerForm.get('CustomerPhone').touched">Please enter Customer Phone Number</span>
+    </mat-error>
+  </mat-form-field>
+
+  <div class="button-row">
+    <button type="submit" [disabled]="!CustomerForm.valid" mat-raised-button color="primary">
+      <mat-icon>save</mat-icon>
+    </button>
+  </div>
+</form>
